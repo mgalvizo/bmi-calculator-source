@@ -16,10 +16,15 @@ const GlobalStyle = createGlobalStyle`
     --white: #fff;
     --black: #000;
     --borders: #d8e2e7;
+    --light-blue: #d6e6fe;
     --gradient: linear-gradient(315deg, #d6e6fe 0%, #d6fcfe 100%);
     /* HEADINGS */
+    --heading-s-fsz: 2rem;
+    --heading-m-fsz: 2.4rem;
+    --heading-l-fsz: 4.8rem;
     --heading-xl-fsz: 6.4rem;
-    --heading-xl-lht: 1.1;
+    --heading-lht: 1.1;
+    --heading-weight: 600;
     /* SPACING */
     --web-padding-xs: 4px;
     --web-padding-s: 8px;
@@ -115,14 +120,14 @@ button {
     clip: rect(1px, 1px, 1px, 1px);
 }
 
-.stripe {
+.component {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
 
-    .stripe__content {
+    .component__content {
         flex-basis: var(--max-content-width);
     }
 }
