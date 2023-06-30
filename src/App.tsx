@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import GlobalStyle from './components/styled/GlobalStyles.styled';
 import Header from './components/UI/Header.tsx';
 import Logo from './assets/logo.svg';
@@ -14,11 +14,12 @@ const App = () => {
 
     const handleUnit = (unit: string) => {
         setUnit(unit);
+        setData({});
     };
 
-    const handleData = (data: FormData) => {
+    const handleData = useCallback((data: FormData) => {
         setData(data);
-    };
+    }, []);
 
     return (
         <>
@@ -40,10 +41,12 @@ const App = () => {
                         </p>
                     </div>
                     <Calculator>
-                        <h3>Enter your details below</h3>
+                        <strong className="form-instruction">
+                            Enter your details below
+                        </strong>
                         <Unit handleUnit={handleUnit} />
                         <Form unit={unit} handleData={handleData} />
-                        <Results data={data} />
+                        <Results data={data} unit={unit} />
                     </Calculator>
                 </div>
             </Header>

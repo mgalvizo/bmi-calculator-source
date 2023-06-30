@@ -11,15 +11,20 @@ interface FormProps {
 
 export type FormData = {
     height?: {
-        cm?: number;
-        ft?: number;
-        in?: number;
+        cm?: string;
+        ft?: string;
+        inches?: string;
     };
     weight?: {
-        kg?: number;
-        st?: number;
-        lbs?: number;
+        kg?: string;
+        st?: string;
+        lbs?: string;
     };
+};
+
+const defaultValues = {
+    height: {},
+    weight: {},
 };
 
 const Form = ({ unit, handleData }: FormProps) => {
@@ -27,19 +32,16 @@ const Form = ({ unit, handleData }: FormProps) => {
         register,
         unregister,
         handleSubmit,
-        reset,
-        formState: { errors, isValid },
+        formState: { errors, isDirty },
         watch,
         trigger,
+        reset,
     } = useForm<FormData>({
-        defaultValues: {
-            height: {},
-            weight: {},
-        },
+        defaultValues,
     });
 
     const onSubmit = (data: FormData) => {
-        console.log(data);
+        console.log('here', data);
     };
 
     const onError = (errors: FieldErrors) => {
@@ -47,171 +49,167 @@ const Form = ({ unit, handleData }: FormProps) => {
     };
 
     useEffect(() => {
-        // Reset the form so it is NOT dirty
-        reset();
-        // Unregister the values that are not necessary in each case
         if (unit === 'metric') {
             unregister('height.ft');
-            unregister('height.in');
+            unregister('height.inches');
             unregister('weight.st');
             unregister('weight.lbs');
-            register('height.cm');
-            register('weight.kg');
-        } else if (unit === 'imperial') {
-            unregister('height.cm');
-            register('height.ft');
-            register('height.in');
-            register('weight.st');
-            register('weight.lbs');
         }
-    }, [unit, watch, register, unregister, reset]);
+
+        if (unit === 'imperial') {
+            unregister('height.cm');
+            unregister('weight.kg');
+        }
+
+        return () => {
+            reset();
+        };
+    }, [unit, unregister, reset]);
 
     useEffect(() => {
-        // Subscribe to all the form data
         const subscription = watch(data => {
             trigger();
-
-            if (isValid) {
-                handleData(data);
-            }
+            handleData(data);
         });
+
+        if (isDirty) {
+            trigger();
+        }
 
         return () => {
             subscription.unsubscribe();
         };
-    }, [watch, trigger, isValid, handleData]);
-
-    // Get access to errors
-    console.log('errors', errors);
+    }, [watch, trigger, isDirty, handleData]);
 
     return (
-        <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
-            {unit === 'metric' && (
-                <>
-                    <FormControl
-                        labelText="Height"
-                        errorMessage={errors?.height?.cm?.message}
-                    >
-                        <input
-                            type="number"
-                            id="height-cm"
-                            placeholder="0"
-                            min={0}
-                            {...register('height.cm', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                    <FormControl
-                        labelText="Weight"
-                        errorMessage={errors?.weight?.kg?.message}
-                    >
-                        <input
-                            type="number"
-                            id="weight-kg"
-                            placeholder="0"
-                            min={0}
-                            {...register('weight.kg', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                </>
-            )}
-            {unit === 'imperial' && (
-                <>
-                    <FormControl
-                        labelText="Height"
-                        errorMessage={errors?.height?.ft?.message}
-                    >
-                        <input
-                            type="number"
-                            id="height-ft"
-                            placeholder="0"
-                            min={0}
-                            {...register('height.ft', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                    <FormControl
-                        labelText="Inches"
-                        className="visually-hidden"
-                        errorMessage={errors?.height?.in?.message}
-                    >
-                        <input
-                            type="number"
-                            id="height-in"
-                            placeholder="0"
-                            min={0}
-                            {...register('height.in', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                    <FormControl
-                        labelText="Weight"
-                        errorMessage={errors?.weight?.st?.message}
-                    >
-                        <input
-                            type="number"
-                            id="weight-st"
-                            placeholder="0"
-                            min={0}
-                            {...register('weight.st', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                    <FormControl
-                        labelText="Pounds"
-                        className="visually-hidden"
-                        errorMessage={errors?.weight?.lbs?.message}
-                    >
-                        <input
-                            type="number"
-                            id="weight-lbs"
-                            placeholder="0"
-                            min={0}
-                            {...register('weight.lbs', {
-                                required: 'This field is required.',
-                                min: {
-                                    value: 0,
-                                    message:
-                                        'Please input only positive numbers',
-                                },
-                            })}
-                        />
-                    </FormControl>
-                </>
-            )}
-            <input type="submit" hidden />
-        </StyledForm>
+        <>
+            <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
+                {unit === 'metric' && (
+                    <>
+                        <FormControl
+                            labelText="Height"
+                            errorMessage={errors?.height?.cm?.message}
+                        >
+                            <input
+                                type="number"
+                                id="height-cm"
+                                placeholder="0"
+                                min={0}
+                                {...register('height.cm', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                        <FormControl
+                            labelText="Weight"
+                            errorMessage={errors?.weight?.kg?.message}
+                        >
+                            <input
+                                type="number"
+                                id="weight-kg"
+                                placeholder="0"
+                                min={0}
+                                {...register('weight.kg', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                    </>
+                )}
+                {unit === 'imperial' && (
+                    <>
+                        <FormControl
+                            labelText="Height"
+                            errorMessage={errors?.height?.ft?.message}
+                        >
+                            <input
+                                type="number"
+                                id="height-ft"
+                                placeholder="0"
+                                min={0}
+                                {...register('height.ft', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                        <FormControl
+                            labelText="Inches"
+                            className="visually-hidden"
+                            errorMessage={errors?.height?.inches?.message}
+                        >
+                            <input
+                                type="number"
+                                id="height-inches"
+                                placeholder="0"
+                                min={0}
+                                {...register('height.inches', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                        <FormControl
+                            labelText="Weight"
+                            errorMessage={errors?.weight?.st?.message}
+                        >
+                            <input
+                                type="number"
+                                id="weight-st"
+                                placeholder="0"
+                                min={0}
+                                {...register('weight.st', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                        <FormControl
+                            labelText="Weight"
+                            className="visually-hidden"
+                            errorMessage={errors?.weight?.lbs?.message}
+                        >
+                            <input
+                                type="number"
+                                id="weight-lbs"
+                                placeholder="0"
+                                min={0}
+                                {...register('weight.lbs', {
+                                    required: 'This field is required.',
+                                    min: {
+                                        value: 0,
+                                        message:
+                                            'Please input only positive numbers',
+                                    },
+                                })}
+                            />
+                        </FormControl>
+                    </>
+                )}
+            </StyledForm>
+        </>
     );
 };
 
