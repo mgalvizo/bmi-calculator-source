@@ -55,58 +55,67 @@ const Results = ({ data, unit }: ResultsProps) => {
 
     return (
         <StyledResults>
-            {(isEmpty || typeof bmi === undefined || bmi === 0) && (
-                <>
-                    <h2>Welcome!</h2>
-                    <p>
+            {(isEmpty ||
+                bmi === undefined ||
+                bmi === 0 ||
+                bmi === Infinity ||
+                isNaN(bmi)) && (
+                <div className="welcome">
+                    <h2 className="welcome-heading">Welcome!</h2>
+                    <p className="welcome__text">
                         Enter your height and weight and you'll see your BMI
                         result here.
                     </p>
-                </>
+                </div>
             )}
-            {!isEmpty && typeof bmi === 'number' && bmi > 0 && (
-                <>
-                    <div className="bmi__result">
-                        <p>Your BMI is...</p>
-                        <h2>{bmi}</h2>
-                    </div>
-                    <div className="bmi__summary">
-                        <span>
-                            Your BMI suggests you're{' '}
-                            {isUnderweight
-                                ? 'underweight'
-                                : isHealthy
-                                ? 'a healthy weight'
-                                : isOverweight
-                                ? 'overweight'
-                                : isObese
-                                ? 'obese'
-                                : '...'}
-                            .
-                        </span>
-                        {unit === 'metric' && (
+            {!isEmpty &&
+                typeof bmi === 'number' &&
+                bmi > 0 &&
+                bmi !== Infinity && (
+                    <div className="results">
+                        <div className="bmi__result">
+                            <p>Your BMI is...</p>
+                            <h2 className="bmi-heading">{bmi}</h2>
+                        </div>
+                        <div className="bmi__summary">
                             <span>
-                                Your ideal weight is between{' '}
-                                <strong>
-                                    {healthyWeight?.minHealthyWeight.kg}kgs -{' '}
-                                    {healthyWeight?.maxHealthyWeight.kg}kgs.
-                                </strong>
+                                Your BMI suggests you're{' '}
+                                {isUnderweight
+                                    ? 'underweight'
+                                    : isHealthy
+                                    ? 'a healthy weight'
+                                    : isOverweight
+                                    ? 'overweight'
+                                    : isObese
+                                    ? 'obese'
+                                    : '...'}
+                                .
                             </span>
-                        )}
-                        {unit === 'imperial' && (
-                            <span>
-                                Your ideal weight is between{' '}
-                                <strong>
-                                    {healthyWeight?.minHealthyWeight.st}st{' '}
-                                    {healthyWeight?.minHealthyWeight.lbs}lbs -{' '}
-                                    {healthyWeight?.maxHealthyWeight.st}st{' '}
-                                    {healthyWeight?.maxHealthyWeight.lbs}lbs.
-                                </strong>
-                            </span>
-                        )}
+                            {unit === 'metric' && (
+                                <span>
+                                    Your ideal weight is between{' '}
+                                    <strong>
+                                        {healthyWeight?.minHealthyWeight.kg}kgs
+                                        - {healthyWeight?.maxHealthyWeight.kg}
+                                        kgs.
+                                    </strong>
+                                </span>
+                            )}
+                            {unit === 'imperial' && (
+                                <span>
+                                    Your ideal weight is between{' '}
+                                    <strong>
+                                        {healthyWeight?.minHealthyWeight.st}st{' '}
+                                        {healthyWeight?.minHealthyWeight.lbs}lbs
+                                        - {healthyWeight?.maxHealthyWeight.st}st{' '}
+                                        {healthyWeight?.maxHealthyWeight.lbs}
+                                        lbs.
+                                    </strong>
+                                </span>
+                            )}
+                        </div>
                     </div>
-                </>
-            )}
+                )}
         </StyledResults>
     );
 };

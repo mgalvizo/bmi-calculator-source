@@ -85,10 +85,11 @@ const Form = ({ unit, handleData }: FormProps) => {
         <>
             <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
                 {unit === 'metric' && (
-                    <>
+                    <div className="metric-inputs">
                         <FormControl
                             labelText="Height"
                             errorMessage={errors?.height?.cm?.message}
+                            unitText="cm"
                         >
                             <input
                                 type="number"
@@ -108,6 +109,7 @@ const Form = ({ unit, handleData }: FormProps) => {
                         <FormControl
                             labelText="Weight"
                             errorMessage={errors?.weight?.kg?.message}
+                            unitText="kg"
                         >
                             <input
                                 type="number"
@@ -124,13 +126,14 @@ const Form = ({ unit, handleData }: FormProps) => {
                                 })}
                             />
                         </FormControl>
-                    </>
+                    </div>
                 )}
                 {unit === 'imperial' && (
-                    <>
+                    <div className="imperial-inputs">
                         <FormControl
                             labelText="Height"
                             errorMessage={errors?.height?.ft?.message}
+                            unitText="ft"
                         >
                             <input
                                 type="number"
@@ -149,8 +152,8 @@ const Form = ({ unit, handleData }: FormProps) => {
                         </FormControl>
                         <FormControl
                             labelText="Inches"
-                            className="visually-hidden"
                             errorMessage={errors?.height?.inches?.message}
+                            unitText="in"
                         >
                             <input
                                 type="number"
@@ -170,6 +173,7 @@ const Form = ({ unit, handleData }: FormProps) => {
                         <FormControl
                             labelText="Weight"
                             errorMessage={errors?.weight?.st?.message}
+                            unitText="st"
                         >
                             <input
                                 type="number"
@@ -188,8 +192,8 @@ const Form = ({ unit, handleData }: FormProps) => {
                         </FormControl>
                         <FormControl
                             labelText="Weight"
-                            className="visually-hidden"
                             errorMessage={errors?.weight?.lbs?.message}
+                            unitText="lbs"
                         >
                             <input
                                 type="number"
@@ -206,7 +210,7 @@ const Form = ({ unit, handleData }: FormProps) => {
                                 })}
                             />
                         </FormControl>
-                    </>
+                    </div>
                 )}
             </StyledForm>
         </>

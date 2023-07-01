@@ -17,14 +17,16 @@ const GlobalStyle = createGlobalStyle`
     --black: #000;
     --borders: #d8e2e7;
     --light-blue: #d6e6fe;
-    --gradient: linear-gradient(315deg, #d6e6fe 0%, #d6fcfe 100%);
+    --error: #c53030;
+    --gradient: linear-gradient(315deg, #D6E6FE 0%, #D6FCFE 100%);
+    --gradient-2: linear-gradient(90deg, #345FF6 0%, #587DFF 100%);
     /* HEADINGS */
     --heading-s-fsz: 2rem;
     --heading-m-fsz: 2.4rem;
     --heading-l-fsz: 4.8rem;
     --heading-xl-fsz: 6.4rem;
     --heading-lht: 1.1;
-    --heading-weight: 600;
+    --semibold: 600;
     /* SPACING */
     --web-padding-xs: 4px;
     --web-padding-s: 8px;
@@ -39,9 +41,17 @@ const GlobalStyle = createGlobalStyle`
     --web-margin-xl: 32px;
     --web-margin-xl2: 40px;
     /* MISC*/
+    --gradient-ht-s: 640px;
+    --gradient-ht-l: 737px;
+    --gradient-w-l: 978px;
     --border-rad: 35px;
     --card-border-rad: 16px;
     --card-box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+    --radio-sz: 30px;
+    --inner-radio-sz: 15px;
+    --input-ht: 70px;
+    --input-lht: 70px;
+    --input-border-rad: 12px;
     /* MEDIA */
     --media-min: 20em; /* 320px */
     --media-tablet: 30em; /* 480px */
@@ -108,6 +118,19 @@ button {
     outline: none;
 }
 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    font-weight: var(--semibold);
+}
+
+strong {
+    font-weight: var(--semibold);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -126,6 +149,17 @@ button {
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
+    padding-left: var(--web-padding-l);
+    padding-right: var(--web-padding-l);
+
+
+    .component__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        flex-basis: var(--max-design-width);
+    }
 
     .component__content {
         flex-basis: var(--max-content-width);
@@ -149,6 +183,9 @@ button {
 
 // 1232px
 @media only screen and (min-width: 77em) {}
+
+// 1336px
+@media only screen and (min-width: 83.5em) {}
 
 // 1440px
 @media only screen and (min-width: 90em) {}

@@ -3,26 +3,29 @@ import StyledFormControl from './styled/FormControl.styled';
 
 interface FormControlProps {
     children?: JSX.Element;
-    labelText: string;
+    labelText?: string;
     errorMessage?: string;
-    className?: string;
+    unitText?: string;
 }
 
 const FormControl = ({
     labelText,
     errorMessage,
-    className,
     children,
+    unitText,
 }: FormControlProps) => {
     return (
         <StyledFormControl>
-            {labelText && (
-                <label className={className} htmlFor={children?.props?.id}>
-                    {labelText}
-                </label>
-            )}
-            {children}
-            {errorMessage && <span className="error">{errorMessage}</span>}
+            <div className="form-control__container">
+                {labelText && (
+                    <label htmlFor={children?.props?.id}>{labelText}</label>
+                )}
+                <div className="input__container">
+                    {children}
+                    <span className="unit">{unitText}</span>
+                </div>
+                {errorMessage && <span className="error">{errorMessage}</span>}
+            </div>
         </StyledFormControl>
     );
 };

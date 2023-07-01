@@ -25,29 +25,38 @@ const App = () => {
         <>
             <GlobalStyle />
             <Header>
-                <div className="component__content">
-                    <div className="gradient__container">
-                        <img className="logo" src={Logo} alt="Website logo" />
-                        <h1>
-                            <span>Body Mass</span>
-                            <span>Index Calculator</span>
-                        </h1>
-                        <p>
-                            Better understand your weight in relation to your
-                            height using our body mass index (BM) calculator.
-                            While BMI is not the sole determinant of a healthy
-                            weight, it offers a valuable starting point to
-                            evaluate your overall health and well-being.
-                        </p>
+                <div className="component__container">
+                    <div className="component__content">
+                        <div className="header-text">
+                            <img
+                                className="logo"
+                                src={Logo}
+                                alt="Website logo"
+                            />
+                            <h1>
+                                <span>Body Mass</span>
+                                <span>Index Calculator</span>
+                            </h1>
+                            <p>
+                                Better understand your weight in relation to
+                                your height using our body mass index (BM)
+                                calculator. While BMI is not the sole
+                                determinant of a healthy weight, it offers a
+                                valuable starting point to evaluate your overall
+                                health and well-being.
+                            </p>
+                        </div>
+                        <Calculator>
+                            <div className="calculator__content">
+                                <strong className="form-instruction">
+                                    Enter your details below
+                                </strong>
+                                <Unit handleUnit={handleUnit} />
+                                <Form unit={unit} handleData={handleData} />
+                                <Results data={data} unit={unit} />
+                            </div>
+                        </Calculator>
                     </div>
-                    <Calculator>
-                        <strong className="form-instruction">
-                            Enter your details below
-                        </strong>
-                        <Unit handleUnit={handleUnit} />
-                        <Form unit={unit} handleData={handleData} />
-                        <Results data={data} unit={unit} />
-                    </Calculator>
                 </div>
             </Header>
         </>

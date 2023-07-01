@@ -1,18 +1,30 @@
 import styled from 'styled-components';
 
-const StyledHeader = styled.header`
-    .component__content {
-        flex-basis: var(--max-design-width);
-    }
+// TODO
 
-    .gradient__container {
-        padding-top: var(--web-padding-xl);
-        padding-bottom: calc(var(--web-padding-xl2) * 5 + var(--web-padding-m));
+const StyledHeader = styled.header`
+    position: relative;
+    padding-top: var(--web-padding-xl);
+    padding-bottom: calc(var(--web-padding-xl) * 2 + var(--web-padding-s));
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--gradient-ht-s);
+        display: block;
         background-color: var(--light-blue);
         background-image: var(--gradient);
         border-bottom-left-radius: var(--border-rad);
         border-bottom-right-radius: var(--border-rad);
+        content: '';
+        z-index: -1;
+    }
+
+    .header-text {
         text-align: center;
+        margin-bottom: calc(var(--web-margin-l) * 2);
     }
 
     .logo {
@@ -21,9 +33,9 @@ const StyledHeader = styled.header`
 
     h1 {
         font-size: var(--heading-l-fsz);
-        font-weight: var(--heading-weight);
         line-height: var(--heading-lht);
         margin-bottom: var(--web-margin-l);
+        letter-spacing: -3px;
 
         span {
             display: block;
@@ -32,23 +44,64 @@ const StyledHeader = styled.header`
 
     // 768px
     @media only screen and (min-width: 48em) {
-        .gradient__content {
-            padding-bottom: calc(var(--web-padding-xl2) * 8);
+        padding-bottom: calc(var(--web-padding-xl) * 3);
+
+        .logo {
+            margin-bottom: var(--web-margin-xl);
+        }
+
+        .header-text {
+            margin-bottom: var(--web-margin-xl2);
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto;
         }
     }
 
     // 1232px
     @media only screen and (min-width: 77em) {
-        padding-left: var(--web-padding-l);
+        padding-top: 0;
+        padding-bottom: calc(var(--web-padding-xl) * 2);
 
-        .gradient__container {
-            max-width: 978px;
-            padding-top: calc(var(--web-padding-xl2) + var(--web-padding-xl));
-            padding-bottom: calc(var(--web-margin-xl2) * 5);
-            padding-left: calc(
-                (var(--web-padding-xl2) * 2) + var(--web-padding-xl)
+        &::before {
+            content: none;
+        }
+
+        .component__container {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: var(--gradient-ht-l);
+                max-width: var(--gradient-w-l);
+                display: block;
+                background-color: var(--light-blue);
+                background-image: var(--gradient);
+                border-bottom-left-radius: var(--border-rad);
+                border-bottom-right-radius: var(--border-rad);
+                content: '';
+                z-index: -1;
+            }
+        }
+
+        .component__content {
+            position: relative;
+            padding-top: calc(
+                var(--web-padding-xl) * 2 + var(--web-padding-s) + 3px
             );
+            padding-bottom: calc(
+                var(--web-padding-xl2) * 5 + var(--web-padding-s) + 2px
+            );
+        }
+
+        .header-text {
             text-align: left;
+            margin-bottom: 0;
         }
 
         .logo {
@@ -62,6 +115,7 @@ const StyledHeader = styled.header`
 
         p {
             max-width: 465px;
+            margin: 0;
         }
     }
 `;
