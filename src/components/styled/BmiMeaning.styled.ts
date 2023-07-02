@@ -32,6 +32,8 @@ const StyledBmiMeaning = styled.div`
 
     // 768px
     @media only screen and (min-width: 48em) {
+        padding-bottom: calc(var(--web-padding-xl) * 3);
+
         .cols {
             padding-top: var(--web-padding-xl2);
             grid-template-columns: repeat(2, 1fr);
