@@ -5,8 +5,10 @@ import Logo from './assets/logo.svg';
 import Calculator from './components/Calculator.tsx';
 import Unit from './components/Unit.tsx';
 import Form from './components/Form.tsx';
-import Results from './components/Results.tsx';
 import { FormData } from './components/Form.tsx';
+import Results from './components/Results.tsx';
+import Main from './components/UI/Main.tsx';
+import BmiMeaning from './components/BmiMeaning.tsx';
 
 const App = () => {
     const [unit, setUnit] = useState<string>('metric');
@@ -59,6 +61,9 @@ const App = () => {
                     </div>
                 </div>
             </Header>
+            <Main>
+                <BmiMeaning />
+            </Main>
         </>
     );
 };
