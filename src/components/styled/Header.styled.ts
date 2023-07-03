@@ -71,6 +71,8 @@ const StyledHeader = styled.header`
 
         .component__container {
             position: relative;
+            padding-left: var(--web-padding-l);
+            padding-right: var(--web-padding-l);
 
             &::before {
                 position: absolute;

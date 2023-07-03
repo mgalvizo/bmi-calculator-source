@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import CurvedLineLeft from '../../assets/pattern-curved-line-left.svg';
 
-const StyledBmiMeaning = styled.div`
-    padding-left: 0;
-    padding-right: 0;
+const StyledBmiMeaning = styled.section`
+    &.component {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     padding-bottom: calc(var(--web-padding-xl) * 2 + var(--web-padding-s));
 
     .cols {
@@ -70,8 +73,10 @@ const StyledBmiMeaning = styled.div`
 
     // 1232px
     @media only screen and (min-width: 77em) {
-        padding-left: var(--web-padding-l);
-        padding-right: var(--web-padding-l);
+        &.component {
+            padding-left: var(--web-padding-l);
+            padding-right: var(--web-padding-l);
+        }
 
         .component__content {
             position: relative;
