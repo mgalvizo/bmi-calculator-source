@@ -25,7 +25,7 @@ const StyledBmiMeaning = styled.section`
         font-size: 3.2rem;
         line-height: var(--heading-lht);
         margin-bottom: var(--web-margin-xl);
-        letter-spacing: -1px;
+        letter-spacing: -2px;
     }
 
     .col-2 {

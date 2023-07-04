@@ -11,6 +11,7 @@ const StyledBmiTip = styled.li`
         font-size: var(--heading-m-fsz);
         line-height: var(--heading-lht);
         margin-bottom: var(--web-margin-l);
+        letter-spacing: -1px;
     }
 
     // 768px
