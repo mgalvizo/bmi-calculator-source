@@ -28,28 +28,19 @@ Users should be able to:
 
 ### Screenshot
 
-#### Mobile (Metric)
+#### Mobile
 
 ![](./screenshots/metric/mobile.png)
-
-#### Mobile (Imperial)
-
 ![](./screenshots/imperial/mobile.png)
 
-#### Tablet (Metric)
+#### Tablet
 
 ![](./screenshots/metric/tablet.png)
-
-#### Tablet (Imperial)
-
 ![](./screenshots/imperial/tablet.png)
 
-#### Desktop (Metric)
+#### Desktop
 
 ![](./screenshots/metric/desktop.png)
-
-#### Desktop (Imperial)
-
 ![](./screenshots/imperial/desktop.png)
 
 ### Links
