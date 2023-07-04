@@ -14,10 +14,6 @@ import {
     BMI_OBESE,
 } from './utils/constants';
 
-// TODO
-// Convert all strings to numbers for calculations
-// Remove leading zeroes
-
 interface ResultsProps {
     data: FormData;
     unit: string;
@@ -28,8 +24,14 @@ const Results = ({ data, unit }: ResultsProps) => {
 
     let bmi: number | undefined;
 
+    let heightIsFilled = false;
+    let weightIsFilled = false;
+
     if (data.height !== undefined && data.weight !== undefined) {
         const { height, weight } = data;
+
+        heightIsFilled = Object.values(height).every(value => value !== '');
+        weightIsFilled = Object.values(weight).every(value => value !== '');
 
         bmi = formatBmi(computeBmi(unit, height, weight));
     }
@@ -59,7 +61,9 @@ const Results = ({ data, unit }: ResultsProps) => {
                 bmi === undefined ||
                 bmi === 0 ||
                 bmi === Infinity ||
-                isNaN(bmi)) && (
+                isNaN(bmi) ||
+                !heightIsFilled ||
+                !weightIsFilled) && (
                 <div className="welcome">
                     <h2 className="welcome-heading">Welcome!</h2>
                     <p className="welcome__text">
@@ -71,7 +75,9 @@ const Results = ({ data, unit }: ResultsProps) => {
             {!isEmpty &&
                 typeof bmi === 'number' &&
                 bmi > 0 &&
-                bmi !== Infinity && (
+                bmi !== Infinity &&
+                heightIsFilled &&
+                weightIsFilled && (
                     <div className="results">
                         <div className="bmi__result">
                             <p>Your BMI is...</p>
