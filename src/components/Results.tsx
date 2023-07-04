@@ -95,7 +95,7 @@ const Results = ({ data, unit }: ResultsProps) => {
                                     : isObese
                                     ? 'obese'
                                     : '...'}
-                                .
+                                .{' '}
                             </span>
                             {unit === 'metric' && (
                                 <span>
