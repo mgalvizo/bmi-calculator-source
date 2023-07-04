@@ -10,6 +10,7 @@ import Results from './components/Results.tsx';
 import Main from './components/UI/Main.tsx';
 import BmiMeaning from './components/BmiMeaning.tsx';
 import BmiTips from './components/BmiTips.tsx';
+import BmiLimitations from './components/BmiLimitations.tsx';
 
 const App = () => {
     const [unit, setUnit] = useState<string>('metric');
@@ -65,6 +66,7 @@ const App = () => {
             <Main>
                 <BmiMeaning />
                 <BmiTips />
+                <BmiLimitations />
             </Main>
         </>
     );
