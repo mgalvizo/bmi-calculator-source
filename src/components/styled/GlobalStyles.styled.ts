@@ -18,7 +18,8 @@ const GlobalStyle = createGlobalStyle`
     --borders: #d8e2e7;
     --light-blue: #d6e6fe;
     --error: #c53030;
-    --gradient: linear-gradient(315deg, #D6E6FE 0%, #D6FCFE 100%);
+    /* --gradient: linear-gradient(315deg, #D6E6FE 0%, #D6FCFE 100%); */
+    --gradient: linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%);
     --gradient-2: linear-gradient(90deg, #345FF6 0%, #587DFF 100%);
     /* HEADINGS */
     --heading-s-fsz: 2rem;

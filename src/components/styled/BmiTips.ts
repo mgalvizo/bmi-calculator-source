@@ -21,7 +21,6 @@ const StyledBmiTips = styled.section`
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--light-blue);
             background-image: var(--gradient);
             z-index: -1;
             opacity: 0.25;

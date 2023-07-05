@@ -14,7 +14,6 @@ const StyledHeader = styled.header`
         width: 100%;
         height: var(--gradient-ht-s);
         display: block;
-        background-color: var(--light-blue);
         background-image: var(--gradient);
         border-bottom-left-radius: var(--border-rad);
         border-bottom-right-radius: var(--border-rad);
@@ -82,7 +81,6 @@ const StyledHeader = styled.header`
                 height: var(--gradient-ht-l);
                 max-width: var(--gradient-w-l);
                 display: block;
-                background-color: var(--light-blue);
                 background-image: var(--gradient);
                 border-bottom-left-radius: var(--border-rad);
                 border-bottom-right-radius: var(--border-rad);
