@@ -45,7 +45,7 @@ Users should be able to:
 
 ### Links
 
--   [Solution URL](https://your-solution-url.com)
+-   [Solution URL](https://www.frontendmentor.io/solutions/bmi-calculator-vite-app-with-react-and-typescript-zZuKaO-WKh)
 -   [Live Site URL](https://mgalvizo.github.io/bmi-calculator/)
 
 ## My process
@@ -61,12 +61,15 @@ Users should be able to:
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [React Hook Form](https://react-hook-form.com/)
 -   [Styled Components](https://styled-components.com/)
+-   [Github Pages](https://github.com/tschaub/gh-pages)
 
 ### What I learned
 
 Writing React functional components, hooks and props with TypeScript.
 
 Registering, watching and validating inputs with React Hook Form.
+
+Publishing a Vite app on Github pages.
 
 ### Useful resources
 
