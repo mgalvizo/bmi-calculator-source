@@ -1,4 +1,9 @@
-import StyledBmiLimitations from './styled/BmiLimitations.styled';
+import {
+    StyledBmiLimitations,
+    StyledBmiLimitationsContainer,
+    StyledBmiLimitationsContent,
+    StyledBmiLimitationsInfo,
+} from './styled/BmiLimitations.styled';
 import { v4 as uuidv4 } from 'uuid';
 import Gender from '../assets/icon-gender.svg';
 import Age from '../assets/icon-age.svg';
@@ -52,10 +57,10 @@ const BmiLimitations = () => {
     });
 
     return (
-        <StyledBmiLimitations className="component">
-            <div className="component__container">
-                <div className="component__content">
-                    <div className="section__info">
+        <StyledBmiLimitations as="section">
+            <StyledBmiLimitationsContainer>
+                <StyledBmiLimitationsContent>
+                    <StyledBmiLimitationsInfo>
                         <h2>Limitations of BMI</h2>
                         <p>
                             Although BMI is often a practical indicator of
@@ -64,10 +69,10 @@ const BmiLimitations = () => {
                             outcomes, and in certain cases, the measurement may
                             not be beneficial to use.
                         </p>
-                    </div>
+                    </StyledBmiLimitationsInfo>
                     {renderedCards}
-                </div>
-            </div>
+                </StyledBmiLimitationsContent>
+            </StyledBmiLimitationsContainer>
         </StyledBmiLimitations>
     );
 };
