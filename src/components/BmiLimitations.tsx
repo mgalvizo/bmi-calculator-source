@@ -1,4 +1,4 @@
-import StyledBmiLimitations from './styled/BmiLimitations';
+import StyledBmiLimitations from './styled/BmiLimitations.styled';
 import { v4 as uuidv4 } from 'uuid';
 import Gender from '../assets/icon-gender.svg';
 import Age from '../assets/icon-age.svg';

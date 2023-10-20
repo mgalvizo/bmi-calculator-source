@@ -132,41 +132,6 @@ strong {
     font-weight: var(--semibold);
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-    clip: rect(1px 1px 1px 1px);
-    /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-}
-
-.component {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding-left: var(--web-padding-l);
-    padding-right: var(--web-padding-l);
-
-
-    .component__container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        flex-direction: row;
-        flex-basis: var(--max-design-width);
-    }
-
-    .component__content {
-        flex-basis: var(--max-content-width);
-    }
-}
-
 // 480px
 @media only screen and (min-width: 30em) {}
 
@@ -190,7 +155,6 @@ strong {
 
 // 1440px
 @media only screen and (min-width: 90em) {}
-
 `;
 
 export default GlobalStyle;

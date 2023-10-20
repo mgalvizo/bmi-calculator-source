@@ -1,6 +1,10 @@
 import { useEffect, ReactNode } from 'react';
 import { useForm, FieldErrors } from 'react-hook-form';
-import StyledForm from './styled/Form.styled';
+import {
+    StyledForm,
+    StyledMetricInputs,
+    StyledImperialInputs,
+} from './styled/Form.styled';
 import FormControl from './FormControl';
 
 interface FormProps {
@@ -41,7 +45,7 @@ const Form = ({ unit, handleData }: FormProps) => {
     });
 
     const onSubmit = (data: FormData) => {
-        console.log('here', data);
+        console.log(data);
     };
 
     const onError = (errors: FieldErrors) => {
@@ -85,7 +89,7 @@ const Form = ({ unit, handleData }: FormProps) => {
         <>
             <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
                 {unit === 'metric' && (
-                    <div className="metric-inputs">
+                    <StyledMetricInputs>
                         <FormControl
                             labelText="Height"
                             errorMessage={errors?.height?.cm?.message}
@@ -126,10 +130,10 @@ const Form = ({ unit, handleData }: FormProps) => {
                                 })}
                             />
                         </FormControl>
-                    </div>
+                    </StyledMetricInputs>
                 )}
                 {unit === 'imperial' && (
-                    <div className="imperial-inputs">
+                    <StyledImperialInputs>
                         <FormControl
                             labelText="Height"
                             errorMessage={errors?.height?.ft?.message}
@@ -210,7 +214,7 @@ const Form = ({ unit, handleData }: FormProps) => {
                                 })}
                             />
                         </FormControl>
-                    </div>
+                    </StyledImperialInputs>
                 )}
             </StyledForm>
         </>

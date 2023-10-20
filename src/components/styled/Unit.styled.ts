@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
 const StyledUnit = styled.div`
-    .radio-control {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: start;
-        align-items: center;
-        gap: var(--web-margin-m);
-    }
-
     label {
         font-weight: var(--semibold);
         cursor: pointer;
@@ -61,23 +53,29 @@ const StyledUnit = styled.div`
             }
         }
     }
+`;
 
-    .radio__container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: start;
-        gap: var(--web-margin-l);
-    }
+const StyledRadioContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    gap: var(--web-margin-l);
 
     // 768px
     @media only screen and (min-width: 48em) {
-        .radio__container {
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--web-margin-xl);
-        }
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--web-margin-xl);
     }
 `;
 
-export default StyledUnit;
+const StyledRadioControl = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
+    gap: var(--web-margin-m);
+`;
+
+export { StyledUnit, StyledRadioContainer, StyledRadioControl };

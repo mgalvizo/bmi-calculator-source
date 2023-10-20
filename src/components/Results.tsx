@@ -1,4 +1,13 @@
-import StyledResults from './styled/Results.styled';
+import {
+    StyledResults,
+    StyledWelcome,
+    StyledWelcomeHeading,
+    StyledWelcomeText,
+    StyledBMIResults,
+    StyledBMIResult,
+    StyledBMIHeading,
+    StyledBMISummary,
+} from './styled/Results.styled';
 import { FormData } from './Form';
 import {
     computeBmi,
@@ -64,13 +73,13 @@ const Results = ({ data, unit }: ResultsProps) => {
                 isNaN(bmi) ||
                 !heightIsFilled ||
                 !weightIsFilled) && (
-                <div className="welcome">
-                    <h2 className="welcome-heading">Welcome!</h2>
-                    <p className="welcome__text">
+                <StyledWelcome>
+                    <StyledWelcomeHeading>Welcome!</StyledWelcomeHeading>
+                    <StyledWelcomeText>
                         Enter your height and weight and you'll see your BMI
                         result here.
-                    </p>
-                </div>
+                    </StyledWelcomeText>
+                </StyledWelcome>
             )}
             {!isEmpty &&
                 typeof bmi === 'number' &&
@@ -78,12 +87,12 @@ const Results = ({ data, unit }: ResultsProps) => {
                 bmi !== Infinity &&
                 heightIsFilled &&
                 weightIsFilled && (
-                    <div className="results">
-                        <div className="bmi__result">
+                    <StyledBMIResults>
+                        <StyledBMIResult>
                             <p>Your BMI is...</p>
-                            <h2 className="bmi-heading">{bmi}</h2>
-                        </div>
-                        <div className="bmi__summary">
+                            <StyledBMIHeading>{bmi}</StyledBMIHeading>
+                        </StyledBMIResult>
+                        <StyledBMISummary>
                             <span>
                                 Your BMI suggests you're{' '}
                                 {isUnderweight
@@ -119,8 +128,8 @@ const Results = ({ data, unit }: ResultsProps) => {
                                     </strong>
                                 </span>
                             )}
-                        </div>
-                    </div>
+                        </StyledBMISummary>
+                    </StyledBMIResults>
                 )}
         </StyledResults>
     );

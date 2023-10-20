@@ -1,5 +1,11 @@
 import { JSX } from 'react';
-import StyledFormControl from './styled/FormControl.styled';
+import {
+    StyledFormControl,
+    StyledFormControlContainer,
+    StyledInputContainer,
+    StyledUnit,
+    StyledError,
+} from './styled/FormControl.styled';
 
 interface FormControlProps {
     children?: JSX.Element;
@@ -16,16 +22,16 @@ const FormControl = ({
 }: FormControlProps) => {
     return (
         <StyledFormControl>
-            <div className="form-control__container">
+            <StyledFormControlContainer>
                 {labelText && (
                     <label htmlFor={children?.props?.id}>{labelText}</label>
                 )}
-                <div className="input__container">
+                <StyledInputContainer>
                     {children}
-                    <span className="unit">{unitText}</span>
-                </div>
-                {errorMessage && <span className="error">{errorMessage}</span>}
-            </div>
+                    <StyledUnit>{unitText}</StyledUnit>
+                </StyledInputContainer>
+                {errorMessage && <StyledError>{errorMessage}</StyledError>}
+            </StyledFormControlContainer>
         </StyledFormControl>
     );
 };

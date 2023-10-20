@@ -47,29 +47,37 @@ const StyledFormControl = styled.div`
             margin: 0;
         }
     }
-
-    .input__container {
-        position: relative;
-        z-index: 0;
-    }
-
-    .unit {
-        position: absolute;
-        top: 50%;
-        right: var(--web-margin-l);
-        transform: translateY(-50%);
-        color: var(--blue);
-        font-size: var(--heading-m-fsz);
-        font-weight: var(--semibold);
-        z-index: -1;
-    }
-
-    .error {
-        display: block;
-        color: var(--error);
-        font-size: var(--body-fsz-s);
-        margin-top: var(--web-margin-s);
-    }
 `;
 
-export default StyledFormControl;
+const StyledFormControlContainer = styled.div``;
+
+const StyledInputContainer = styled.div`
+    position: relative;
+    z-index: 0;
+`;
+
+const StyledUnit = styled.span`
+    position: absolute;
+    top: 50%;
+    right: var(--web-margin-l);
+    transform: translateY(-50%);
+    color: var(--blue);
+    font-size: var(--heading-m-fsz);
+    font-weight: var(--semibold);
+    z-index: -1;
+`;
+
+const StyledError = styled.span`
+    display: block;
+    color: var(--error);
+    font-size: var(--body-fsz-s);
+    margin-top: var(--web-margin-s);
+`;
+
+export {
+    StyledFormControl,
+    StyledFormControlContainer,
+    StyledInputContainer,
+    StyledUnit,
+    StyledError,
+};

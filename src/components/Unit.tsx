@@ -1,5 +1,10 @@
 import { ReactNode } from 'react';
-import StyledUnit from './styled/Unit.styled';
+import {
+    StyledUnit,
+    StyledRadioContainer,
+    StyledRadioControl,
+} from './styled/Unit.styled';
+import { VisuallyHidden } from './styled/VisuallyHidden.styled';
 
 interface UnitProps {
     children?: ReactNode;
@@ -10,9 +15,11 @@ const Unit = ({ handleUnit }: UnitProps) => {
     return (
         <StyledUnit>
             <fieldset>
-                <legend className="visually-hidden">Select a unit:</legend>
-                <div className="radio__container">
-                    <div className="radio-control">
+                <legend className="visually-hidden">
+                    <VisuallyHidden>Select a unit:</VisuallyHidden>
+                </legend>
+                <StyledRadioContainer>
+                    <StyledRadioControl>
                         <input
                             type="radio"
                             name="unit"
@@ -21,10 +28,9 @@ const Unit = ({ handleUnit }: UnitProps) => {
                             defaultChecked={true}
                             onChange={e => handleUnit(e.target.value)}
                         />
-
                         <label htmlFor="metric">Metric</label>
-                    </div>
-                    <div className="radio-control">
+                    </StyledRadioControl>
+                    <StyledRadioControl>
                         <input
                             type="radio"
                             name="unit"
@@ -33,8 +39,8 @@ const Unit = ({ handleUnit }: UnitProps) => {
                             onChange={e => handleUnit(e.target.value)}
                         />
                         <label htmlFor="imperial">Imperial</label>
-                    </div>
-                </div>
+                    </StyledRadioControl>
+                </StyledRadioContainer>
             </fieldset>
         </StyledUnit>
     );

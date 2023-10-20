@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import StyledBmiLimitation from './styled/BmiLimitation';
+import StyledBmiLimitation from './styled/BmiLimitation.styled';
 
 type BmiLimitation = {
     id: string;
