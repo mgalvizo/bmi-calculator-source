@@ -15,7 +15,7 @@ const Unit = ({ handleUnit }: UnitProps) => {
     return (
         <StyledUnit>
             <fieldset>
-                <legend className="visually-hidden">
+                <legend>
                     <VisuallyHidden>Select a unit:</VisuallyHidden>
                 </legend>
                 <StyledRadioContainer>
