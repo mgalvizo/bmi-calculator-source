@@ -1,17 +1,24 @@
-import StyledBmiMeaning from './styled/BmiMeaning.styled';
+import {
+    StyledBmiMeaning,
+    StyledBmiMeaningContent,
+    StyledColumns,
+    StyledColumnOne,
+    StyledColumnTwo,
+    StyledImgContainer,
+} from './styled/BmiMeaning.styled';
 import Man from '../assets/image-man-eating.webp';
 
 const BmiMeaning = () => {
     return (
-        <StyledBmiMeaning className="component">
-            <div className="component__content">
-                <div className="cols">
-                    <div className="col col-1">
-                        <div className="img__container">
+        <StyledBmiMeaning as="section">
+            <StyledBmiMeaningContent>
+                <StyledColumns>
+                    <StyledColumnOne>
+                        <StyledImgContainer>
                             <img src={Man} alt="Man eating sushi" />
-                        </div>
-                    </div>
-                    <div className="col col-2">
+                        </StyledImgContainer>
+                    </StyledColumnOne>
+                    <StyledColumnTwo>
                         <h2>What your BMI result means</h2>
                         <p>
                             A BMI range of 18.5 to 24.9 is considered a 'healthy
@@ -23,9 +30,9 @@ const BmiMeaning = () => {
                             Additionally, strive for regular physical activity,
                             ideally about 30 minutes daily for five days a week.
                         </p>
-                    </div>
-                </div>
-            </div>
+                    </StyledColumnTwo>
+                </StyledColumns>
+            </StyledBmiMeaningContent>
         </StyledBmiMeaning>
     );
 };
