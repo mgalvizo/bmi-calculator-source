@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import StyledBmiTip from './styled/BmiTip';
+import { StyledBmiTip, StyledImgContainer } from './styled/BmiTip.styled';
 
 type BmiTip = {
     id: string;
@@ -18,9 +18,9 @@ const BmiTip = ({ tip }: BmiTipProps) => {
 
     return (
         <StyledBmiTip>
-            <div className="img__container">
+            <StyledImgContainer>
                 <img src={image.src} alt={image.alt} />
-            </div>
+            </StyledImgContainer>
             <h3>{title}</h3>
             <p>{description}</p>
         </StyledBmiTip>

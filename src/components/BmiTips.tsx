@@ -1,5 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
-import StyledBmiTips from './styled/BmiTips';
+import {
+    StyledBmiTips,
+    StyledBMITipsContainer,
+    StyledBMITipsContent,
+} from './styled/BmiTips.styled';
 import BmiTip from './BmiTip';
 import Meal from '../assets/icon-eating.svg';
 import Dumbbell from '../assets/icon-exercise.svg';
@@ -45,12 +49,12 @@ const BmiTips = () => {
     });
 
     return (
-        <StyledBmiTips className="component">
-            <div className="component__container">
-                <div className="component__content">
+        <StyledBmiTips as="section">
+            <StyledBMITipsContainer>
+                <StyledBMITipsContent>
                     <ul>{renderedTips}</ul>
-                </div>
-            </div>
+                </StyledBMITipsContent>
+            </StyledBMITipsContainer>
         </StyledBmiTips>
     );
 };
