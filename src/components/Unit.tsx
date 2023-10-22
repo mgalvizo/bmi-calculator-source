@@ -4,7 +4,6 @@ import {
     StyledRadioContainer,
     StyledRadioControl,
 } from './styled/Unit.styled';
-import { VisuallyHidden } from './styled/VisuallyHidden.styled';
 
 interface UnitProps {
     children?: ReactNode;
@@ -15,9 +14,7 @@ const Unit = ({ handleUnit }: UnitProps) => {
     return (
         <StyledUnit>
             <fieldset>
-                <legend>
-                    <VisuallyHidden>Select a unit:</VisuallyHidden>
-                </legend>
+                <legend className="visually-hidden">Select a unit:</legend>
                 <StyledRadioContainer>
                     <StyledRadioControl>
                         <input
