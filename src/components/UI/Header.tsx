@@ -14,7 +14,12 @@ const Header = () => {
             <StyledHeaderContainer>
                 <StyledHeaderContent>
                     <StyledHeaderText>
-                        <StyledLogo src={Logo} alt="Website logo" />
+                        <StyledLogo
+                            src={Logo}
+                            alt="Website logo"
+                            width="64"
+                            height="64"
+                        />
                         <h1>
                             <span>Body Mass</span>
                             <span>Index Calculator</span>

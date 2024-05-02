@@ -20,7 +20,8 @@ const BmiLimitation = ({ limitation }: BmiLimitationProps) => {
     return (
         <StyledBmiLimitation id={htmlId}>
             <h3>
-                <img src={image.src} alt={image.alt} /> <span>{title}</span>
+                <img src={image.src} alt={image.alt} width="32" height="32" />{' '}
+                <span>{title}</span>
             </h3>
             <p>{description}</p>
         </StyledBmiLimitation>

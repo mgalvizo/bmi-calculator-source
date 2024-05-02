@@ -19,7 +19,7 @@ const BmiTip = ({ tip }: BmiTipProps) => {
     return (
         <StyledBmiTip>
             <StyledImgContainer>
-                <img src={image.src} alt={image.alt} />
+                <img src={image.src} alt={image.alt} width="64" height="64" />
             </StyledImgContainer>
             <h3>{title}</h3>
             <p>{description}</p>

@@ -15,7 +15,12 @@ const BmiMeaning = () => {
                 <StyledColumns>
                     <StyledColumnOne>
                         <StyledImgContainer>
-                            <img src={Man} alt="Man eating sushi" />
+                            <img
+                                src={Man}
+                                alt="Man eating sushi"
+                                width="1128"
+                                height="1066"
+                            />
                         </StyledImgContainer>
                     </StyledColumnOne>
                     <StyledColumnTwo>

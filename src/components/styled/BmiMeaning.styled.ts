@@ -119,6 +119,10 @@ const StyledImgContainer = styled.div`
     max-width: 464px;
     margin: 0 auto;
 
+    img {
+        height: auto;
+    }
+
     @media only screen and (min-width: 48em) {
         position: absolute;
         bottom: 0;
